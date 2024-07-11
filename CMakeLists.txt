@@ -43,7 +43,7 @@ include_directories(
 )
 
 # Option to choose between static and shared library
-option(BUILD_SHARED_LIBS "Build shared library" ON)
+option(BUILD_SHARED_LIBS "Build shared library" OFF)
 
 # Define library target
 add_library(libiconv ${SOURCES} ${HEADERS} ${RESOURCES})
