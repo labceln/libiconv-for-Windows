@@ -62,6 +62,8 @@ target_compile_definitions(libiconv PRIVATE
     _CRT_SECURE_NO_WARNINGS
     BUILDING_LIBICONV
     BUILDING_LIBCHARSET
+    UNICODE 
+    _UNICODE
 )
 
 if(BUILD_SHARED_LIBS)
