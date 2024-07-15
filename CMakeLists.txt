@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)  # CMAKE_MSVC_RUNTIME_LIBRARY requires CMake 3.15 or later
 
-project(libiconv VERSION 1.0)
+project(libiconv VERSION 1.17)
 
 # Set C standard
 set(CMAKE_C_STANDARD 11)
