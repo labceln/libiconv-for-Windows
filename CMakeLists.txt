@@ -38,8 +38,6 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/libcharset/include
     ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/include
     ${CMAKE_CURRENT_SOURCE_DIR}/libiconv
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/../include
 )
 
 # Option to choose between static and shared library
