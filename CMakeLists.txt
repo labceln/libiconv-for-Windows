@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.15)  # CMAKE_MSVC_RUNTIME_LIBRARY requires CMake 3.15 or later
+# CMAKE_MSVC_RUNTIME_LIBRARY requires CMake 3.15 or later
+cmake_minimum_required(VERSION 3.15)  
 
 project(libiconv VERSION 1.17)
 
@@ -33,18 +34,20 @@ set(RESOURCES
     res/libiconv.rc
 )
 
-# Include directories
-include_directories(
-    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/libcharset/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv
-)
 
 # Option to choose between static and shared library
 option(BUILD_SHARED_LIBS "Build shared library" OFF)
 
 # Define library target
 add_library(libiconv ${SOURCES} ${HEADERS} ${RESOURCES})
+
+# Include directories
+target_include_directories(libiconv PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/libcharset/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/libiconv
+)
+
 
 # Set target properties
 set_target_properties(libiconv PROPERTIES
@@ -60,7 +63,7 @@ target_compile_definitions(libiconv PRIVATE
     _CRT_SECURE_NO_WARNINGS
     BUILDING_LIBICONV
     BUILDING_LIBCHARSET
-    UNICODE 
+    UNICODE
     _UNICODE
 )
 
@@ -91,9 +94,4 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set_target_properties(libiconv PROPERTIES DEBUG_POSTFIX "D")
 else()
     target_compile_definitions(libiconv PRIVATE NDEBUG)
-endif()
-
-# Rename static library
-if(NOT BUILD_SHARED_LIBS)
-    set_target_properties(libiconv PROPERTIES OUTPUT_NAME "libiconvStatic")
 endif()
